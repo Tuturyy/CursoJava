@@ -6,7 +6,10 @@ public class main{
         //Criar alunos
          Scanner scanner = new Scanner(System.in);
 
-        /*System.out.print("Quantos alunos deseja criar? ");
+        /*
+        
+        
+        System.out.print("Quantos alunos deseja criar? ");
         int quantidadeAlunos = Integer.parseInt(scanner.nextLine());
 
         for (int i = 0; i < quantidadeAlunos; i++) {
@@ -15,6 +18,12 @@ public class main{
         }
 
         Aluno.listarAlunos();
+        
+
+
+
+
+
 
         System.out.print("Quantos Cursos deseja criar? ");
         int quantidadeCursos = Integer.parseInt(scanner.nextLine());
@@ -26,8 +35,8 @@ public class main{
 
         Curso.listarCursos();
 
-        */
-
+        
+           
 
         System.out.print("Quantas Cadeiras deseja criar? ");
         int quantidadeCadeiras = Integer.parseInt(scanner.nextLine());
@@ -37,8 +46,9 @@ public class main{
             Cadeira.listaCadeiras.add(novoCadeira);
         }
 
-        Cadeira.listarCadeiras();
+        Cadeira.listarCadeiras();*/
 
+        Menu.mostrarMenu();
         scanner.close(); 
     }
 }
