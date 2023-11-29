@@ -4,13 +4,12 @@ import java.util.Scanner;
 
 public class Docente extends Pessoa {
     static List<Docente> listaDocentes = new ArrayList<Docente>();
-    int numDocente;
     ArrayList<Curso> cursoD;
     ArrayList<Cadeira> cadeirasD;
 
-    public Docente(String nomeP, String dataNascimento, int idPessoa, int numDocente){
+    public Docente(String nomeP, String dataNascimento, int idPessoa){
         super(nomeP, dataNascimento, idPessoa);
-        this.numDocente = numDocente;
+        
     }
 
     public static Docente criarNovoDocente(Scanner scanner) {
@@ -21,17 +20,16 @@ public class Docente extends Pessoa {
         String dataNascimentoDocente = scanner.nextLine();
         System.out.print("ID do docente: ");
         int idDocente = Integer.parseInt(scanner.nextLine());
-        System.out.print("Número do docente: ");
-        int numDocente = Integer.parseInt(scanner.nextLine());
+        
     
-        return new Docente(nomeDocente, dataNascimentoDocente, idDocente, numDocente);
+        return new Docente(nomeDocente, dataNascimentoDocente, idDocente);
     }
     
 
     public static void listarDocentes(){
         System.out.println("Lista de Docentes:");
         for (Docente docente : listaDocentes){
-            System.out.println("ID: " + docente.getID() + "  Nome: " + docente.getNome() + "  Data de Nascimento: " + docente.getData() + "  Numero de Docente: " + docente.numDocente);
+            System.out.println("ID: " + docente.getID() + "  Nome: " + docente.getNome() + "  Data de Nascimento: " + docente.getData());
         }    
     }
 }
