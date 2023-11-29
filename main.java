@@ -15,7 +15,7 @@ public class main{
         }
 
         Aluno.listarAlunos();
-        
+
         System.out.print("Quantos Cursos deseja criar? ");
         int quantidadeCursos = Integer.parseInt(scanner.nextLine());
 
@@ -40,9 +40,5 @@ public class main{
         Cadeira.listarCadeiras();
 
         scanner.close(); 
-
-
-
     }
-
 }

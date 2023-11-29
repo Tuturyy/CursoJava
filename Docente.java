@@ -31,7 +31,7 @@ public class Docente extends Pessoa {
     public static void listarDocentes(){
         System.out.println("Lista de Docentes:");
         for (Docente docente : listaDocentes){
-            System.out.println("ID: " + docente.getID() + "  Nome: " + docente.getNome() + "  Data de Nascimento: " + docente.getData() + "  Numero de aluno: " + docente.numDocente);
+            System.out.println("ID: " + docente.getID() + "  Nome: " + docente.getNome() + "  Data de Nascimento: " + docente.getData() + "  Numero de Docente: " + docente.numDocente);
         }    
     }
 }
