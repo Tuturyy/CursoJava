@@ -1,5 +1,10 @@
+import java.util.Scanner;
+
+
+
 public class Menu {
     
+
 }
 
 //Criar alunos
