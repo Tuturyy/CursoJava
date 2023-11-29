@@ -4,7 +4,7 @@ public class main{
     public static void main(String[] args) {
         
         //Criar alunos
-         Scanner scanner = new Scanner(System.in);
+        //Scanner scanner = new Scanner(System.in);
 
         /*
         
@@ -49,6 +49,9 @@ public class main{
         Cadeira.listarCadeiras();*/
 
         Menu.mostrarMenu();
-        scanner.close(); 
+        //scanner.close(); 
+
+
+
     }
 }

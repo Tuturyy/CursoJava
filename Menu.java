@@ -8,18 +8,18 @@ public class Menu {
     public static void mostrarMenu() {
 
             Scanner scanner = new Scanner(System.in);
-            int opcao;
+
+            System.out.println("\n------------------------ MENU ------------------------\n");
+            System.out.println("1. Criar Aluno\n");
+            System.out.println("2. Criar Curso\n");
+            System.out.println("3. Criar Cadeira\n");
+
+            System.out.println("0. Sair do Programa\n");
+            System.out.print("Escolha uma opção: ");
+
+            int opcao = Integer.parseInt(scanner.nextLine());
     
             do {
-                    System.out.println("\n------------------------ MENU ------------------------\n");
-                    System.out.println("1. Criar Aluno\n");
-                    System.out.println("2. Criar Curso\n");
-                    System.out.println("3. Criar Cadeira\n");
-                    
-                    System.out.println("0. Sair do Programa\n");
-                System.out.print("Escolha uma opção: ");
-                opcao = scanner.nextInt();
-    
                 switch (opcao) {
                     case 1:
                         System.out.print("Quantos alunos deseja criar? ");
@@ -29,9 +29,8 @@ public class Menu {
                             Aluno novoAluno = Aluno.criarNovoAluno(scanner);
                             Aluno.listaAlunos.add(novoAluno);
                         }
-                    
-                        Aluno.listarAlunos();
-                            break;
+                        mostrarMenu();
+                        break;
                     case 2:
                         System.out.print("Quantos Cursos deseja criar? ");
                         int quantidadeCursos = Integer.parseInt(scanner.nextLine());
@@ -40,8 +39,6 @@ public class Menu {
                             Curso novoCurso = Curso.criarNovoCurso(scanner);
                             Curso.listaCursos.add(novoCurso);
                         }
-                    
-                        Curso.listarCursos();
                         break;
                     case 3:
                        System.out.print("Quantas Cadeiras deseja criar? ");
@@ -51,8 +48,6 @@ public class Menu {
                             Cadeira novoCadeira = Cadeira.criarNovaCadeira(scanner);
                             Cadeira.listaCadeiras.add(novoCadeira);
                         } 
-                    
-                        Cadeira.listarCadeiras();
                         break;
                     case 0:
                         System.out.println("A sair do programa. Adeus!");
@@ -65,24 +60,8 @@ public class Menu {
     
             scanner.close();
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
     
-   
 
 
 
