@@ -6,11 +6,12 @@ import java.util.List;
 
 public class Curso {
     static List<Curso> listaCursos = new ArrayList<Curso>();
-    static String nomeCrs;
+    String nomeCrs;
     int idCurso;
     int notaCrs;
     static ArrayList<Aluno> alunosCrs;
     ArrayList<Cadeira> cadeirasCrs;
+    ArrayList<Docente> docentesCrs;
     int mediaCrs;
 
     public Curso(String nomeCrs, int idCurso){
@@ -53,7 +54,6 @@ public class Curso {
     }
 
     public static void adicionarAlunoPorID(int idCurso, int idAluno) {
-        Scanner scanner = new Scanner(System.in);
 
         Curso cursoEncontrado = encontrarCursoPorID(idCurso);
 
@@ -67,11 +67,86 @@ public class Curso {
         }
     }
 
+    public static void mostrarAlunosDoCurso(int idCurso) {
+        for (Curso curso : Curso.listaCursos) {
+            if (curso.idCurso == idCurso) {
+                System.out.println("Alunos matriculados no curso " + curso.nomeCrs + ":");
+        if (alunosCrs != null) {
+            for (Aluno aluno : alunosCrs) {
+                System.out.println("ID do Aluno: " + aluno.getID() + " Nome do Aluno: " + aluno.getNome());
+            }
+        } else {
+            System.out.println("Nenhum aluno matriculado neste curso.");
+        }
+            }
+        }
+    }
+
+    public void adicionarDocenteCurso(Docente docente) {
+        if (docentesCrs == null) {
+            docentesCrs = new ArrayList<>();
+        }
+        docentesCrs.add(docente);
+    }
+
+    public static void adicionarDocentePorID(int idCurso, int idDocente) {
+
+        Curso cursoEncontrado = encontrarCursoPorID(idCurso);
+
+        Docente docenteEncontrado = Docente.encontrarDocentePorID(idDocente);
+
+        if (cursoEncontrado != null && docenteEncontrado != null) {
+            cursoEncontrado.adicionarDocenteCurso(docenteEncontrado);
+            System.out.println("Docente adicionado com sucesso no curso!");
+        } else {
+            System.out.println("Curso ou docente não encontrado. Não foi possível realizar a adição.");
+        }
+    }
+
+    public static void mostrarDocentesDoCurso(int idCurso) {
+        for (Curso curso : Curso.listaCursos) {
+            if (curso.idCurso == idCurso) {
+                System.out.println("Docentes a lecionar no curso " + curso.nomeCrs + ":\n");
+        if (alunosCrs != null) {
+            for (Aluno aluno : alunosCrs) {
+                System.out.println("ID do Docente: " + aluno.getID());
+                System.out.println("Nome do Docente: " + aluno.getNome());
+            }
+        } else {
+            System.out.println("Nenhum aluno matriculado neste curso.");
+        }
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     public void adicionarCadeiraCurso(Cadeira cadeira) {
         if (cadeirasCrs == null) {
             cadeirasCrs = new ArrayList<>();
         }
         cadeirasCrs.add(cadeira);
+    }
+
+    public static void adicionarCadeiraPorID(int idCurso, int idCadeira) {
+        Curso cursoEncontrado = encontrarCursoPorID(idCurso);
+        Cadeira cadeiraEncontrada = Cadeira.encontrarCadeiraPorID(idCadeira);
+    
+        if (cursoEncontrado != null && cadeiraEncontrada != null) {
+            cursoEncontrado.adicionarCadeiraCurso(cadeiraEncontrada);
+            System.out.println("Cadeira adicionada com sucesso ao curso!");
+        } else {
+            System.out.println("Curso ou cadeira não encontrado. Não foi possível realizar a adição.");
+        }
     }
 
     public static void mostrarCadeirasDoCurso(int idCurso) {
@@ -92,32 +167,16 @@ public class Curso {
         }
     }
 
-    public static void adicionarCadeiraPorID(int idCurso, int idCadeira) {
-        Curso cursoEncontrado = encontrarCursoPorID(idCurso);
-        Cadeira cadeiraEncontrada = Cadeira.encontrarCadeiraPorID(idCadeira);
-    
-        if (cursoEncontrado != null && cadeiraEncontrada != null) {
-            cursoEncontrado.adicionarCadeiraCurso(cadeiraEncontrada);
-            System.out.println("Cadeira adicionada com sucesso ao curso!");
-        } else {
-            System.out.println("Curso ou cadeira não encontrado. Não foi possível realizar a adição.");
-        }
-    }
 
-    public static void mostrarAlunosDoCurso(int idCurso) {
-        for (Curso curso : Curso.listaCursos) {
-            if (curso.idCurso == idCurso) {
-                System.out.println("Alunos matriculados no curso " + nomeCrs + ":");
-        if (alunosCrs != null) {
-            for (Aluno aluno : alunosCrs) {
-                System.out.println("ID do Aluno: " + aluno.getID() + " Nome do Aluno: " + aluno.getNome());
-            }
-        } else {
-            System.out.println("Nenhum aluno matriculado neste curso.");
-        }
-            }
-        }
-    }
+
+
+
+
+
+
+
+
+
 
     public void AdicionarAlunoCadeirasCurso(Aluno aluno) {
         for (Cadeira cadeira : cadeirasCrs) {
