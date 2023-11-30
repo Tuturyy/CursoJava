@@ -34,6 +34,13 @@ public class Cadeira {
         }    
     }
 
-
+    public static Cadeira encontrarCadeiraPorID(int idCadeira) {
+        for (Cadeira cadeira : listaCadeiras) {
+            if (cadeira.idCadeira == idCadeira) {
+                return cadeira;
+            }
+        }
+        return null;
+    }
 
 }

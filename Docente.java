@@ -32,4 +32,13 @@ public class Docente extends Pessoa {
             System.out.println("ID: " + docente.getID() + "  Nome: " + docente.getNome() + "  Data de Nascimento: " + docente.getData());
         }    
     }
+
+    public static Docente encontrarDocentePorID(int idDocente) {
+        for (Docente docente : listaDocentes) {
+            if (docente.getID() == idDocente) {
+                return docente;
+            }
+        }
+        return null;
+    }
 }

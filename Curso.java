@@ -6,10 +6,10 @@ import java.util.List;
 
 public class Curso {
     static List<Curso> listaCursos = new ArrayList<Curso>();
-    String nomeCrs;
+    static String nomeCrs;
     int idCurso;
     int notaCrs;
-    ArrayList<Aluno> alunosCrs;
+    static ArrayList<Aluno> alunosCrs;
     ArrayList<Cadeira> cadeirasCrs;
     int mediaCrs;
 
@@ -36,8 +36,106 @@ public class Curso {
         }    
     }
 
+    public static Curso encontrarCursoPorID(int idCurso) {
+        for (Curso curso : listaCursos) {
+            if (curso.idCurso == idCurso) {
+                return curso;
+            }
+        }
+        return null;
+    }
 
+    public void adicionarAlunoCurso(Aluno aluno) {
+        if (alunosCrs == null) {
+            alunosCrs = new ArrayList<>();
+        }
+        alunosCrs.add(aluno);
+    }
 
+    public static void adicionarAlunoPorID(int idCurso, int idAluno) {
+        Scanner scanner = new Scanner(System.in);
+
+        Curso cursoEncontrado = encontrarCursoPorID(idCurso);
+
+        Aluno alunoEncontrado = Aluno.encontrarAlunoPorID(idAluno);
+
+        if (cursoEncontrado != null && alunoEncontrado != null) {
+            cursoEncontrado.adicionarAlunoCurso(alunoEncontrado);
+            System.out.println("Aluno inscrito com sucesso no curso!");
+        } else {
+            System.out.println("Curso ou aluno não encontrado. Não foi possível realizar a inscrição.");
+        }
+    }
+
+    public void adicionarCadeiraCurso(Cadeira cadeira) {
+        if (cadeirasCrs == null) {
+            cadeirasCrs = new ArrayList<>();
+        }
+        cadeirasCrs.add(cadeira);
+    }
+
+    public static void mostrarCadeirasDoCurso(int idCurso) {
+        Curso cursoEncontrado = encontrarCursoPorID(idCurso);
+    
+        if (cursoEncontrado != null) {
+            System.out.println("Cadeiras do curso " + cursoEncontrado.nomeCrs + ":");
+    
+            if (cursoEncontrado.cadeirasCrs != null && !cursoEncontrado.cadeirasCrs.isEmpty()) {
+                for (Cadeira cadeira : cursoEncontrado.cadeirasCrs) {
+                    System.out.println("ID da Cadeira: " + cadeira.idCadeira + " Nome da Cadeira: " + cadeira.nomeCdr);
+                }
+            } else {
+                System.out.println("Nenhuma cadeira cadastrada neste curso.");
+            }
+        } else {
+            System.out.println("Curso não encontrado. Não foi possível mostrar as cadeiras.");
+        }
+    }
+
+    public static void adicionarCadeiraPorID(int idCurso, int idCadeira) {
+        Curso cursoEncontrado = encontrarCursoPorID(idCurso);
+        Cadeira cadeiraEncontrada = Cadeira.encontrarCadeiraPorID(idCadeira);
+    
+        if (cursoEncontrado != null && cadeiraEncontrada != null) {
+            cursoEncontrado.adicionarCadeiraCurso(cadeiraEncontrada);
+            System.out.println("Cadeira adicionada com sucesso ao curso!");
+        } else {
+            System.out.println("Curso ou cadeira não encontrado. Não foi possível realizar a adição.");
+        }
+    }
+
+    public static void mostrarAlunosDoCurso(int idCurso) {
+        for (Curso curso : Curso.listaCursos) {
+            if (curso.idCurso == idCurso) {
+                System.out.println("Alunos matriculados no curso " + nomeCrs + ":");
+        if (alunosCrs != null) {
+            for (Aluno aluno : alunosCrs) {
+                System.out.println("ID do Aluno: " + aluno.getID() + " Nome do Aluno: " + aluno.getNome());
+            }
+        } else {
+            System.out.println("Nenhum aluno matriculado neste curso.");
+        }
+            }
+        }
+    }
+
+    public void AdicionarAlunoCadeirasCurso(Aluno aluno) {
+        for (Cadeira cadeira : cadeirasCrs) {
+            if (cadeira.alunosCdr == null) {
+                cadeira.alunosCdr = new ArrayList<>();
+            }
+            cadeira.alunosCdr.add(aluno);
+        }
+    }
+
+    public void AdicionarDocenteCadeirasCurso(Docente docente) {
+        for (Cadeira cadeira : cadeirasCrs) {
+            if (cadeira.docentesCdr == null) {
+                cadeira.docentesCdr = new ArrayList<>();
+            }
+            cadeira.docentesCdr.add(docente);
+        }
+    }
 }
 
 

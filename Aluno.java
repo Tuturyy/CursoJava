@@ -31,9 +31,23 @@ public class Aluno extends Pessoa{
 
     public static void listarAlunos(){
         System.out.println("Lista de Alunos:");
+        System.out.println("\n");
         for (Aluno aluno : listaAlunos){
-            System.out.println("ID: " + aluno.getID() + "  Nome: " + aluno.getNome() + "  Data de Nascimento: " + aluno.getData() + "  Numero de aluno: " + aluno.numAluno);
+            System.out.println("ID: " + aluno.getID());
+            System.out.println("Nome: " + aluno.getNome());
+            System.out.println("Data de Nascimento: " + aluno.getData());
+            System.out.println("Numero de aluno: " + aluno.numAluno);
         }    
     }
+
+    public static Aluno encontrarAlunoPorID(int idAluno) {
+        for (Aluno aluno : Aluno.listaAlunos) {
+            if (aluno.getID() == idAluno) {
+                return aluno;
+            }
+        }
+        return null;
+    }
+    
 
 }
