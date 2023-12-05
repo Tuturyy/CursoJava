@@ -13,6 +13,7 @@ public class Aluno extends Pessoa{
         super(nomeP, dataNascimento, idPessoa);
         this.numAluno = numAluno;
     }
+    
 
     public static Aluno criarNovoAluno(Scanner scanner) {
         System.out.println("Criar um novo Aluno:");
