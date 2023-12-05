@@ -119,17 +119,6 @@ public class Curso {
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
     public void adicionarCadeiraCurso(Cadeira cadeira) {
         if (cadeirasCrs == null) {
             cadeirasCrs = new ArrayList<>();
@@ -167,23 +156,13 @@ public class Curso {
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
     public void AdicionarAlunoCadeirasCurso(Aluno aluno) {
         for (Cadeira cadeira : cadeirasCrs) {
             if (cadeira.alunosCdr == null) {
                 cadeira.alunosCdr = new ArrayList<>();
             }
             cadeira.alunosCdr.add(aluno);
+            aluno.adicionarCadeiraAluno(cadeira);
         }
     }
 

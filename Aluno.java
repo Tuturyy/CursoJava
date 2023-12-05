@@ -48,6 +48,16 @@ public class Aluno extends Pessoa{
         }
         return null;
     }
+
+    public void adicionarCadeiraAluno(Cadeira cadeira) {
+        if (cadeirasA == null) {
+            cadeirasA = new ArrayList<>();
+        }
+        cadeirasA.add(cadeira);
+    }
     
+    public static void MostarCadeirasdeAluno(int idAluno){
+        
+    }
 
 }
