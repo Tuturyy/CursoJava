@@ -22,6 +22,11 @@ public class Menu {
             System.out.println("14. Mostrar Cadeiras de um Curso");
             System.out.println("15. Adicionar Aluno a todas as cadeiras de um curso");
             System.out.println("16. Adicionar Docente a todas as cadeiras de um curso");
+            //mostrar cadeiras de aluno
+            //mostrar cadeiras de docente
+            //mostrar cursos de aluno
+            //mostrar cursos de docente
+
             System.out.println("17. Sair");
             System.out.print("Escolha uma opção: ");
 
