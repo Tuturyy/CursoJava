@@ -5,7 +5,7 @@ import java.util.List;
 public class Aluno extends Pessoa{
     static List<Aluno> listaAlunos = new ArrayList<Aluno>();
     int numAluno;
-    String cursoA;
+    ArrayList<Curso> CursosA;
     ArrayList<Cadeira> cadeirasA;
     int mediaA;
 
@@ -57,7 +57,41 @@ public class Aluno extends Pessoa{
     }
     
     public static void MostarCadeirasdeAluno(int idAluno){
-        
+        Aluno AlunoEncontrado = encontrarAlunoPorID(idAluno);
+
+        if(AlunoEncontrado != null){
+            System.out.println("Cadeiras do Aluno " + "ID:" + AlunoEncontrado.idPessoa + " Nome:" + AlunoEncontrado.nomeP);
+
+            if (AlunoEncontrado.cadeirasA != null && !AlunoEncontrado.cadeirasA.isEmpty()) {
+                for (Cadeira cadeira : AlunoEncontrado.cadeirasA) {
+                    System.out.println("ID da Cadeira: " + cadeira.idCadeira + " Nome da Cadeira: " + cadeira.nomeCdr);
+                }
+            } else {
+                System.out.println("O aluno não está inscrito a nenhuma cadeira.");
+            }
+        } else {
+            System.out.println("Aluno não encontrado. Não foi possível mostrar as cadeiras.");
+        }
     }
 
+    public ArrayList<Curso> getCursosA() { 
+        if (this.CursosA == null) {
+            this.CursosA = new ArrayList<>();
+        }
+        return this.CursosA;
+    }
+
+    public static void mostrarCursosDeAluno(int idAluno) {
+        Aluno aluno = encontrarAlunoPorID(idAluno);
+
+        System.out.println("Cursos do Aluno " + aluno.getNome() + ":");
+        
+        for (Curso curso : aluno.getCursosA()) {
+            if (curso.alunosCrs.contains(aluno)) {
+                System.out.println("- " + curso.nomeCrs);
+            }
+        }
+    }
 }
+
+

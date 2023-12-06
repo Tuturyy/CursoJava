@@ -41,4 +41,48 @@ public class Docente extends Pessoa {
         }
         return null;
     }
+
+    public void adicionarCadeiraDocente(Cadeira cadeira) {
+        if (cadeirasD == null) {
+            cadeirasD = new ArrayList<>();
+        }
+        cadeirasD.add(cadeira);
+    }
+    
+    public static void MostarCadeirasdeDocente(int idDocente){
+        Docente docenteEncontrado = encontrarDocentePorID(idDocente);
+
+        if(docenteEncontrado != null){
+            System.out.println("Cadeiras do Docente " + "ID:" + docenteEncontrado.idPessoa + " Nome:" + docenteEncontrado.nomeP);
+
+            if (docenteEncontrado.cadeirasD != null && !docenteEncontrado.cadeirasD.isEmpty()) {
+                for (Cadeira cadeira : docenteEncontrado.cadeirasD) {
+                    System.out.println("ID da Cadeira: " + cadeira.idCadeira + " Nome da Cadeira: " + cadeira.nomeCdr);
+                }
+            } else {
+                System.out.println("O Docente não está inscrito a nenhuma cadeira.");
+            }
+        } else {
+            System.out.println("Docente não encontrado. Não foi possível mostrar as cadeiras.");
+        }
+    }
+
+    public ArrayList<Curso> getCursosD() { 
+        if (this.cursoD == null) {
+            this.cursoD = new ArrayList<>();
+        }
+        return this.cursoD;
+    }
+
+    public static void mostrarCursosDeDocente(int idDocente) {
+        Docente docente = encontrarDocentePorID(idDocente);
+
+        System.out.println("Cursos do Docente " + docente.getNome() + ":");
+        
+        for (Curso curso : docente.getCursosD()) {
+            if (curso.docentesCrs.contains(docente)) {
+                System.out.println("- " + curso.nomeCrs);
+            }
+        }
+    }
 }
